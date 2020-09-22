@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">StaffApp</string>
+    <string name="list_specialties">Список специальностей</string>
 </resources>
