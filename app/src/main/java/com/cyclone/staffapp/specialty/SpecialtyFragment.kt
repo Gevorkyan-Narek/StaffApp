@@ -1,9 +1,12 @@
-package com.cyclone.staffapp
+package com.cyclone.staffapp.specialty
 
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.core.view.children
 import androidx.fragment.app.Fragment
+import com.cyclone.staffapp.R
+import com.cyclone.staffapp.Storage
 import com.cyclone.staffapp.network.Response
 import com.cyclone.staffapp.network.RetrofitInstance
 import kotlinx.android.synthetic.main.speciality_fragment.*
@@ -24,9 +27,10 @@ class SpecialtyFragment : Fragment(R.layout.speciality_fragment) {
                     Log.d("Successful Response", response.message())
                     val list = response.body()!!
                     Storage.persons = list.person
-                    Storage.specialty = list.person.flatMap { person -> person.specialty }.distinct()
-                    specialtyRecycler.adapter = SpecialtyAdapter(Storage.specialty)
+                    Storage.specialty =
+                        list.person.flatMap { person -> person.specialty }.distinct()
 
+                    specialtyRecycler.adapter = SpecialtyAdapter(Storage.specialty)
                 } else {
                     Log.d("Not successful Response", response.message())
                     Log.d("Not successful Response", response.raw().request().url().toString())
@@ -38,5 +42,6 @@ class SpecialtyFragment : Fragment(R.layout.speciality_fragment) {
                 Log.d("Failure", call.request().body().toString())
             }
         })
+
     }
 }
