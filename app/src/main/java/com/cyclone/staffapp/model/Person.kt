@@ -1,4 +1,4 @@
-package com.cyclone.staffapp.network
+package com.cyclone.staffapp.model
 
 import com.google.gson.annotations.SerializedName
 
@@ -8,7 +8,7 @@ data class Person(
     @SerializedName("l_name")
     val lastName: String,
     @SerializedName("birthday")
-    val birthday: String,
+    val birthday: String?,
     @SerializedName("avatr_url")
     val avatarUrl: String,
     @SerializedName("specialty")

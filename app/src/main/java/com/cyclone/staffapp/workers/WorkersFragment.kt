@@ -1,4 +1,4 @@
-package com.cyclone.staffapp.worker
+package com.cyclone.staffapp.workers
 
 import android.os.Bundle
 import android.util.Log

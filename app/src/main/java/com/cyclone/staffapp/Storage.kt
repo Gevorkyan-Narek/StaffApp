@@ -1,7 +1,7 @@
 package com.cyclone.staffapp
 
-import com.cyclone.staffapp.network.Person
-import com.cyclone.staffapp.network.Specialty
+import com.cyclone.staffapp.model.Person
+import com.cyclone.staffapp.model.Specialty
 
 class Storage {
 

@@ -2,4 +2,8 @@
     <string name="app_name">StaffApp</string>
     <string name="list_specialties">Список специальностей</string>
     <string name="workers_list">Список работников</string>
+    <string name="detail_page">Детальная страница</string>
+    <string name="FIO">ФИО:</string>
+    <string name="birthday">Дата рождения:</string>
+    <string name="specialty">Специальность:</string>
 </resources>

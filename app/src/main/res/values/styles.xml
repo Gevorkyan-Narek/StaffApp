@@ -21,4 +21,9 @@
         <item name="android:background">?android:attr/listDivider</item>
     </style>
 
+    <style name="MainTextStyle">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
 </resources>

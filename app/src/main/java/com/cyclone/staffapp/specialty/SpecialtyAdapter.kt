@@ -9,8 +9,8 @@ import android.widget.TextView
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.cyclone.staffapp.R
-import com.cyclone.staffapp.network.Specialty
-import com.cyclone.staffapp.worker.WorkersFragment
+import com.cyclone.staffapp.model.Specialty
+import com.cyclone.staffapp.workers.WorkersFragment
 import kotlinx.android.synthetic.main.specialty_item_adapter.view.*
 
 class SpecialtyAdapter(private val list: List<Specialty>) :
