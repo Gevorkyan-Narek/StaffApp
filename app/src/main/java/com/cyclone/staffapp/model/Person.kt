@@ -1,16 +1,51 @@
 package com.cyclone.staffapp.model
 
-import com.google.gson.annotations.SerializedName
+import android.util.Log
+import com.cyclone.staffapp.getDate
+import com.squareup.moshi.*
+import java.util.*
 
 data class Person(
-    @SerializedName("f_name")
+    @Json(name = "f_name")
     val firstName: String,
-    @SerializedName("l_name")
+    @Json(name = "l_name")
     val lastName: String,
-    @SerializedName("birthday")
-    val birthday: String?,
-    @SerializedName("avatr_url")
-    val avatarUrl: String,
-    @SerializedName("specialty")
+    @Json(name = "birthday")
+    var birthday: Date?,
+    @Json(name = "avatr_url")
+    val avatarUrl: String?,
+    @Json(name = "specialty")
     val specialty: List<Specialty>
 )
+
+class DateJsonAdapter : JsonAdapter<Date?>() {
+
+    @FromJson
+    override fun fromJson(reader: JsonReader): Date? {
+        reader.apply {
+            return when (peek()) {
+                JsonReader.Token.STRING -> {
+                    val birthday = nextString()
+//                    if (birthday.isNullOrEmpty()) {
+//                        null
+//                    } else {
+                        getDate(birthday)
+//                    }
+                }
+                JsonReader.Token.NULL -> {
+                    nextNull()
+                }
+                else -> {
+                    null
+                }
+            }
+        }
+    }
+
+    @ToJson
+    override fun toJson(writer: JsonWriter, value: Date?) {
+        if (value != null) {
+            writer.value(value.toString())
+        }
+    }
+}

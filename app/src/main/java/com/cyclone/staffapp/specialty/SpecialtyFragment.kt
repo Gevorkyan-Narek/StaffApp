@@ -3,7 +3,6 @@ package com.cyclone.staffapp.specialty
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import androidx.core.view.children
 import androidx.fragment.app.Fragment
 import com.cyclone.staffapp.R
 import com.cyclone.staffapp.Storage

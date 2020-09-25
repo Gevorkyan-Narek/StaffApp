@@ -1,10 +1,10 @@
 package com.cyclone.staffapp.model
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 
-data class Specialty (
-    @SerializedName("specialty_id")
+data class Specialty(
+    @Json(name = "specialty_id")
     val id: Int,
-    @SerializedName("name")
+    @Json(name = "name")
     val name: String
 )

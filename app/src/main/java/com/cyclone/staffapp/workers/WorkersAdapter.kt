@@ -34,7 +34,8 @@ class WorkersAdapter(private var workers: List<Person>) :
         holder.itemView.setOnClickListener {
             val fragment = EmployeeFragment()
             Bundle().apply {
-                putInt("id", position)
+                putString("firstName", worker.firstName)
+                putString("lastName", worker.lastName)
             }.let { bundle ->
                 fragment.arguments = bundle
             }

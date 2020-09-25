@@ -1,9 +1,9 @@
 package com.cyclone.staffapp.network
 
 import com.cyclone.staffapp.model.Person
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 
-data class Response (
-    @SerializedName("response")
+data class Response(
+    @Json(name = "response")
     val person: List<Person>
 )
