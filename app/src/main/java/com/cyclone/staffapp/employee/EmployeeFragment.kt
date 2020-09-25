@@ -2,14 +2,15 @@ package com.cyclone.staffapp.employee
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.View
-import android.widget.ImageView
 import androidx.fragment.app.Fragment
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.cyclone.staffapp.R
 import com.cyclone.staffapp.Storage
+import com.cyclone.staffapp.setImage
 import kotlinx.android.synthetic.main.employee_fragment.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 class EmployeeFragment : Fragment(R.layout.employee_fragment) {
 
@@ -17,19 +18,17 @@ class EmployeeFragment : Fragment(R.layout.employee_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val id = arguments!!.getInt("id")
+        val firstName = arguments!!.getString("firstName")
+        val lastName = arguments!!.getString("lastName")
 
-        val person = Storage.persons[id]
-        name.text = "${person.firstName} ${person.lastName}"
-        birthday.text = person.birthday ?: "-"
+        val person =
+            Storage.persons.find { person -> person.firstName == firstName && person.lastName == lastName }!!
+        name.text = "$firstName $lastName"
+        Log.d("Employee", person.birthday.toString())
+        birthday.text = if (person.birthday == null) "-"
+        else SimpleDateFormat("dd.MM.YYYY", Locale.getDefault()).format(person.birthday!!)
         specialty.text = person.specialty.joinToString(", ") { specialty -> specialty.name }
         avatar.setImage(person.avatarUrl)
     }
 
-    private fun ImageView.setImage(url: String) {
-        Glide.with(context)
-            .load(url)
-            .transform(RoundedCorners(15))
-            .into(this)
-    }
 }
