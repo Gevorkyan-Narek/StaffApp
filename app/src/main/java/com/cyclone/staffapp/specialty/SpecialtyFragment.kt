@@ -23,7 +23,6 @@ class SpecialtyFragment : Fragment(R.layout.speciality_fragment) {
             override fun onResponse(call: Call<Response>, response: retrofit2.Response<Response>) {
                 if (response.isSuccessful) {
                     Log.d("Response", "successful")
-                    Log.d("Successful Response", response.message())
                     val list = response.body()!!
                     Storage.persons = list.person
                     Storage.specialty =
@@ -32,13 +31,12 @@ class SpecialtyFragment : Fragment(R.layout.speciality_fragment) {
                     specialtyRecycler.adapter = SpecialtyAdapter(Storage.specialty)
                 } else {
                     Log.d("Not successful Response", response.message())
-                    Log.d("Not successful Response", response.raw().request().url().toString())
                 }
             }
 
             override fun onFailure(call: Call<Response>, t: Throwable) {
                 Log.d("Failure", t.localizedMessage!!)
-                Log.d("Failure", call.request().body().toString())
+                Log.d("Failure", t.printStackTrace().toString())
             }
         })
 

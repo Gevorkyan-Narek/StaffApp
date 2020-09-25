@@ -1,7 +1,7 @@
 package com.cyclone.staffapp
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.cyclone.staffapp.specialty.SpecialtyFragment
 
 class MainActivity : AppCompatActivity() {

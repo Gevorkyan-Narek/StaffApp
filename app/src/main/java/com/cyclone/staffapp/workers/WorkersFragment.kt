@@ -1,7 +1,6 @@
 package com.cyclone.staffapp.workers
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.cyclone.staffapp.R
@@ -15,7 +14,6 @@ class WorkersFragment : Fragment(R.layout.workers_fragment) {
 
         if (arguments != null) {
             val id = arguments!!.getInt("id")
-            Log.d("Workers", id.toString())
             workersRecycler.adapter = WorkersAdapter(Storage.persons.filter { person -> person.specialty.map { specialty -> specialty.id }.contains(id) })
         }
     }
