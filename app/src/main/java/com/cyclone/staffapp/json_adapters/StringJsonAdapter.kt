@@ -1,4 +1,4 @@
-package com.cyclone.staffapp
+package com.cyclone.staffapp.json_adapters
 
 import com.squareup.moshi.FromJson
 import java.util.*

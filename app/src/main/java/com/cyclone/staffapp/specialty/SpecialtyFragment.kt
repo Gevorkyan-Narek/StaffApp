@@ -1,44 +1,44 @@
 package com.cyclone.staffapp.specialty
 
 import android.os.Bundle
-import android.util.Log
+import android.os.Handler
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.cyclone.staffapp.R
-import com.cyclone.staffapp.Storage
-import com.cyclone.staffapp.network.Response
-import com.cyclone.staffapp.network.RetrofitInstance
+import com.cyclone.staffapp.db.DataBase
+import com.cyclone.staffapp.db.SpecialtyDB
 import kotlinx.android.synthetic.main.speciality_fragment.*
-import retrofit2.Call
-import retrofit2.Callback
+import java.util.concurrent.Executors
+import java.util.concurrent.TimeUnit
 
 class SpecialtyFragment : Fragment(R.layout.speciality_fragment) {
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val retrofit = RetrofitInstance.getData()
+        lateinit var specialtyList: List<SpecialtyDB>
 
-        retrofit.getData().enqueue(object : Callback<Response> {
-            override fun onResponse(call: Call<Response>, response: retrofit2.Response<Response>) {
-                if (response.isSuccessful) {
-                    Log.d("Response", "successful")
-                    val list = response.body()!!
-                    Storage.persons = list.person
-                    Storage.specialty =
-                        list.person.flatMap { person -> person.specialty }.distinct()
+        Handler {
 
-                    specialtyRecycler.adapter = SpecialtyAdapter(Storage.specialty)
-                } else {
-                    Log.d("Not successful Response", response.message())
-                }
+            val executor = Executors.newSingleThreadExecutor()
+
+            executor.submit {
+                specialtyList = DataBase.getDataBase(context!!).specialtyDAO().getAll()
             }
 
-            override fun onFailure(call: Call<Response>, t: Throwable) {
-                Log.d("Failure", t.localizedMessage!!)
-                Log.d("Failure", t.printStackTrace().toString())
+            try {
+                executor.shutdown()
+                executor.awaitTermination(10, TimeUnit.SECONDS)
+            } catch (e: InterruptedException) {
+                e.printStackTrace()
+            } finally {
+                if (!executor.isShutdown) executor.shutdownNow()
+                specialtyRecycler.adapter = SpecialtyAdapter(specialtyList)
             }
-        })
+
+            true
+        }.sendEmptyMessage(0)
 
     }
 }

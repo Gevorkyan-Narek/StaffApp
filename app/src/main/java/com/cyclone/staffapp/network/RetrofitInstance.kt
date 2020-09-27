@@ -1,8 +1,8 @@
 package com.cyclone.staffapp.network
 
-import com.cyclone.staffapp.DateJsonAdapter
-import com.cyclone.staffapp.StringJsonAdapter
-import com.cyclone.staffapp.URLJsonAdapter
+import com.cyclone.staffapp.json_adapters.DateJsonAdapter
+import com.cyclone.staffapp.json_adapters.StringJsonAdapter
+import com.cyclone.staffapp.json_adapters.URIJsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
@@ -17,7 +17,7 @@ class RetrofitInstance {
             .add(KotlinJsonAdapterFactory())
             .add(DateJsonAdapter())
             .add(StringJsonAdapter())
-            .add(URLJsonAdapter())
+            .add(URIJsonAdapter())
             .build()
 
         private var retrofit = Retrofit.Builder()
@@ -27,7 +27,7 @@ class RetrofitInstance {
 
         private var service: StaffService? = null
 
-        fun getData(): StaffService {
+        fun getService(): StaffService {
 
             if (service == null) {
                 service = retrofit.create(StaffService::class.java)

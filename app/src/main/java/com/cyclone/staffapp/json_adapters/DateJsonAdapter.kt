@@ -1,5 +1,6 @@
-package com.cyclone.staffapp
+package com.cyclone.staffapp.json_adapters
 
+import com.cyclone.staffapp.getDate
 import com.squareup.moshi.*
 import java.util.*
 

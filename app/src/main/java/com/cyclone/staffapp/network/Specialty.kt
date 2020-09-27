@@ -1,10 +1,10 @@
-package com.cyclone.staffapp.model
+package com.cyclone.staffapp.network
 
 import com.squareup.moshi.Json
 
 data class Specialty(
     @Json(name = "specialty_id")
-    val id: Int,
+    val id: Long,
     @Json(name = "name")
     val name: String
 )

@@ -9,11 +9,11 @@ import android.widget.TextView
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.cyclone.staffapp.R
+import com.cyclone.staffapp.db.EmployeeDB
 import com.cyclone.staffapp.employee.EmployeeFragment
-import com.cyclone.staffapp.model.Person
 import kotlinx.android.synthetic.main.workers_item_adapter.view.*
 
-class WorkersAdapter(private var workers: List<Person>) :
+class WorkersAdapter(private var workers: List<EmployeeDB>) :
     RecyclerView.Adapter<WorkersAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -34,8 +34,7 @@ class WorkersAdapter(private var workers: List<Person>) :
         holder.itemView.setOnClickListener {
             val fragment = EmployeeFragment()
             Bundle().apply {
-                putString("firstName", worker.firstName)
-                putString("lastName", worker.lastName)
+                putLong("id", worker.id)
             }.let { bundle ->
                 fragment.arguments = bundle
             }

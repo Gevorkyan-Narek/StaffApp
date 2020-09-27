@@ -9,11 +9,11 @@ import android.widget.TextView
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.cyclone.staffapp.R
-import com.cyclone.staffapp.model.Specialty
+import com.cyclone.staffapp.db.SpecialtyDB
 import com.cyclone.staffapp.workers.WorkersFragment
 import kotlinx.android.synthetic.main.specialty_item_adapter.view.*
 
-class SpecialtyAdapter(private val list: List<Specialty>) :
+class SpecialtyAdapter(private val list: List<SpecialtyDB>) :
     RecyclerView.Adapter<SpecialtyAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -31,9 +31,8 @@ class SpecialtyAdapter(private val list: List<Specialty>) :
 
         holder.itemView.setOnClickListener {
             val fragment = WorkersFragment()
-            Log.d("Specialty", list[position].id.toString())
             Bundle().apply {
-                putInt("id", list[position].id)
+                putLong("id", list[position].id)
             }.let { bundle ->
                 fragment.arguments = bundle
             }

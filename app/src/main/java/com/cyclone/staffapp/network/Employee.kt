@@ -1,10 +1,10 @@
-package com.cyclone.staffapp.model
+package com.cyclone.staffapp.network
 
 import com.squareup.moshi.Json
 import java.net.URI
 import java.util.*
 
-data class Person(
+data class Employee(
     @Json(name = "f_name")
     val firstName: String,
     @Json(name = "l_name")
@@ -12,7 +12,7 @@ data class Person(
     @Json(name = "birthday")
     var birthday: Date?,
     @Json(name = "avatr_url")
-    val avatarUrl: URI?,
+    val avatarURI: URI?,
     @Json(name = "specialty")
     val specialty: List<Specialty>
 )

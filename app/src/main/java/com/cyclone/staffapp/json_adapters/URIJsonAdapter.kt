@@ -1,4 +1,4 @@
-package com.cyclone.staffapp
+package com.cyclone.staffapp.json_adapters
 
 import com.squareup.moshi.FromJson
 import com.squareup.moshi.JsonReader
@@ -6,7 +6,7 @@ import com.squareup.moshi.JsonWriter
 import com.squareup.moshi.ToJson
 import java.net.URI
 
-class URLJsonAdapter{
+class URIJsonAdapter{
 
     @FromJson
     fun fromJson(reader: JsonReader): URI? {
