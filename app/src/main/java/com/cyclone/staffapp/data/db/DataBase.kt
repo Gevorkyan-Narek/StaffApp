@@ -1,12 +1,14 @@
-package com.cyclone.staffapp.db
+package com.cyclone.staffapp.data.db
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.cyclone.staffapp.dao.EmployeeDAO
-import com.cyclone.staffapp.dao.SpecialtyDAO
+import com.cyclone.staffapp.domain.entities.EmployeeDB
+import com.cyclone.staffapp.domain.entities.SpecialtyDB
+import com.cyclone.staffapp.data.repositories.EmployeeDAO
+import com.cyclone.staffapp.data.repositories.SpecialtyDAO
 
 @Database(entities = [EmployeeDB::class, SpecialtyDB::class], version = 1, exportSchema = false)
 @TypeConverters(Converters::class)
@@ -18,16 +20,16 @@ abstract class DataBase : RoomDatabase() {
     companion object {
         private var instance: DataBase? = null
 
-        fun getDataBase(context: Context): DataBase {
-            if (instance != null) return instance!!
-
-            instance = Room.databaseBuilder(
+        fun initDataBase(context: Context) {
+            val db = Room.databaseBuilder(
                 context.applicationContext,
                 DataBase::class.java,
                 "employee"
             ).build()
 
-            return instance!!
+            instance = db
         }
+
+        fun getDataBase() = instance!!
     }
 }

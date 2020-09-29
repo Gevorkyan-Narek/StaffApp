@@ -1,4 +1,4 @@
-package com.cyclone.staffapp.network
+package com.cyclone.staffapp.data.entities
 
 import com.squareup.moshi.Json
 

@@ -1,7 +1,7 @@
-package com.cyclone.staffapp.db
+package com.cyclone.staffapp.data.db
 
+import android.net.Uri
 import androidx.room.TypeConverter
-import java.net.URI
 import java.util.*
 
 class Converters {
@@ -16,12 +16,12 @@ class Converters {
     }
 
     @TypeConverter
-    fun fromString(value: String?): URI? {
-        return URI(value)
+    fun fromString(value: String?): Uri? {
+        return Uri.parse(value)
     }
 
     @TypeConverter
-    fun UriToString(value: URI?): String? {
+    fun UriToString(value: Uri?): String? {
         return value.toString()
     }
 
@@ -32,13 +32,6 @@ class Converters {
 
     @TypeConverter
     fun StringToLong(value: String?): List<Long>? {
-//        val list = mutableListOf<Specialty>()
-//        value?.split(",")?.map { s ->
-//            val mas = s.split("")
-//            list.add(Specialty(mas[0].toLong(), mas[1]))
-//        }
-//        return list
-
         return value?.split(",")?.map { s -> s.toLong() }
     }
 }

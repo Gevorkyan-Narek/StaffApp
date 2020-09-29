@@ -1,4 +1,4 @@
-package com.cyclone.staffapp.db
+package com.cyclone.staffapp.domain.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

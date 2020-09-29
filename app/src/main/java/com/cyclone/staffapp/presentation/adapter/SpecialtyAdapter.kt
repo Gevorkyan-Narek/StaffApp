@@ -1,4 +1,4 @@
-package com.cyclone.staffapp.specialty
+package com.cyclone.staffapp.presentation.adapter
 
 import android.os.Bundle
 import android.util.Log
@@ -9,8 +9,8 @@ import android.widget.TextView
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.cyclone.staffapp.R
-import com.cyclone.staffapp.db.SpecialtyDB
-import com.cyclone.staffapp.workers.WorkersFragment
+import com.cyclone.staffapp.domain.entities.SpecialtyDB
+import com.cyclone.staffapp.presentation.ui.WorkersFragment
 import kotlinx.android.synthetic.main.specialty_item_adapter.view.*
 
 class SpecialtyAdapter(private val list: List<SpecialtyDB>) :
@@ -36,8 +36,8 @@ class SpecialtyAdapter(private val list: List<SpecialtyDB>) :
             }.let { bundle ->
                 fragment.arguments = bundle
             }
-            (it.context as FragmentActivity).supportFragmentManager.beginTransaction().addToBackStack("specialty")
-                .replace(R.id.fragment, fragment).commit()
+            (it.context as FragmentActivity).supportFragmentManager.beginTransaction()
+                .addToBackStack("specialty").replace(R.id.fragment, fragment).commit()
         }
     }
 
