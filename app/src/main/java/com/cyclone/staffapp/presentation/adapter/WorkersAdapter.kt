@@ -1,4 +1,4 @@
-package com.cyclone.staffapp.workers
+package com.cyclone.staffapp.presentation.adapter
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -9,11 +9,11 @@ import android.widget.TextView
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.cyclone.staffapp.R
-import com.cyclone.staffapp.db.EmployeeDB
-import com.cyclone.staffapp.employee.EmployeeFragment
+import com.cyclone.staffapp.domain.entities.EmployeeDB
+import com.cyclone.staffapp.presentation.ui.EmployeeFragment
 import kotlinx.android.synthetic.main.workers_item_adapter.view.*
 
-class WorkersAdapter(private var workers: List<EmployeeDB>) :
+class WorkersAdapter(private val workers: List<EmployeeDB>) :
     RecyclerView.Adapter<WorkersAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

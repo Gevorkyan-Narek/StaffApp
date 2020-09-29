@@ -1,15 +1,16 @@
 package com.cyclone.staffapp
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.net.Uri
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import java.net.URI
 import java.text.SimpleDateFormat
 import java.util.*
 
-fun ImageView.setImage(uri: URI?) {
-    Glide.with(context)
+fun ImageView.setImage(context: Context?, uri: Uri?) {
+    Glide.with(context!!)
         .load(uri)
         .transform(RoundedCorners(15))
         .placeholder(R.drawable.ic_cap)

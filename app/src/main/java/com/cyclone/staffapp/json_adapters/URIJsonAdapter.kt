@@ -1,15 +1,15 @@
 package com.cyclone.staffapp.json_adapters
 
+import android.net.Uri
 import com.squareup.moshi.FromJson
 import com.squareup.moshi.JsonReader
 import com.squareup.moshi.JsonWriter
 import com.squareup.moshi.ToJson
-import java.net.URI
 
-class URIJsonAdapter{
+class URIJsonAdapter {
 
     @FromJson
-    fun fromJson(reader: JsonReader): URI? {
+    fun fromJson(reader: JsonReader): Uri? {
         reader.apply {
             return when (peek()) {
                 JsonReader.Token.NULL -> {
@@ -17,7 +17,7 @@ class URIJsonAdapter{
                 }
                 JsonReader.Token.STRING -> {
                     val string = nextString()
-                    if (string.isNotEmpty()) URI(string)
+                    if (string.isNotEmpty()) Uri.parse(string)
                     else null
                 }
                 else -> {
@@ -28,7 +28,7 @@ class URIJsonAdapter{
     }
 
     @ToJson
-    fun toJson(writer: JsonWriter, value: URI?) {
+    fun toJson(writer: JsonWriter, value: Uri?) {
         if (value != null) {
             writer.value(value.toString())
         }

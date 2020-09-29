@@ -1,16 +1,17 @@
-package com.cyclone.staffapp.dao
+package com.cyclone.staffapp.data.repositories
 
 import androidx.room.*
-import com.cyclone.staffapp.db.SpecialtyDB
+import com.cyclone.staffapp.domain.entities.SpecialtyDB
+import io.reactivex.Flowable
 
 @Dao
 interface SpecialtyDAO {
 
     @Query("select * from specialtydb")
-    fun getAll(): List<SpecialtyDB>
+    fun getAll(): Flowable<List<SpecialtyDB>>
 
     @Query("select * from specialtydb where id = :id")
-    fun getById(id: Long): SpecialtyDB
+    fun getById(id: Long): Flowable<SpecialtyDB>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insert(specialtyDB: SpecialtyDB)
