@@ -1,9 +1,8 @@
-package com.cyclone.staffapp.data.di
+package com.cyclone.staffapp.data.network
 
-import com.cyclone.staffapp.data.api.StaffService
-import com.cyclone.staffapp.json_adapters.DateJsonAdapter
-import com.cyclone.staffapp.json_adapters.StringJsonAdapter
-import com.cyclone.staffapp.json_adapters.URIJsonAdapter
+import com.cyclone.staffapp.data.model.json_adapters.DateJsonAdapter
+import com.cyclone.staffapp.data.model.json_adapters.StringJsonAdapter
+import com.cyclone.staffapp.data.model.json_adapters.URIJsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import io.reactivex.schedulers.Schedulers

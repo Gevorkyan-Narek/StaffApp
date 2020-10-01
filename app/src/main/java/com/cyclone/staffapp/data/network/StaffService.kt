@@ -1,6 +1,6 @@
-package com.cyclone.staffapp.data.api
+package com.cyclone.staffapp.data.network
 
-import com.cyclone.staffapp.data.entities.Response
+import com.cyclone.staffapp.data.model.Response
 import io.reactivex.Single
 import retrofit2.http.GET
 

@@ -1,4 +1,4 @@
-package com.cyclone.staffapp.domain.repositories.employee
+package com.cyclone.staffapp.domain.repositories
 
 import com.cyclone.staffapp.domain.entities.EmployeeDB
 import io.reactivex.Observable
@@ -18,6 +18,4 @@ interface EmployeeRepo {
     fun getById(id: Long): Observable<EmployeeDB>
 
     fun getAll(): Observable<List<EmployeeDB>>
-
-    fun getBySpecialty(id: Long): Observable<List<EmployeeDB>>
 }

@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.cyclone.staffapp.R
 import com.cyclone.staffapp.data.db.DataBase
-import com.cyclone.staffapp.domain.repositories.RetrofitDataRepo
+import com.cyclone.staffapp.domain.usecases.RetrofitUseCase
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         DataBase.initDataBase(this)
 
-        RetrofitDataRepo.loadData()
+        RetrofitUseCase.loadData()
 
         supportFragmentManager
             .beginTransaction()

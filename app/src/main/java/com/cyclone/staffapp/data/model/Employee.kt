@@ -1,4 +1,4 @@
-package com.cyclone.staffapp.data.entities
+package com.cyclone.staffapp.data.model
 
 import android.net.Uri
 import com.squareup.moshi.Json

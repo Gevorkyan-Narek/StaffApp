@@ -1,4 +1,4 @@
-package com.cyclone.staffapp.data.repositories
+package com.cyclone.staffapp.data.repositories.employee
 
 import androidx.room.*
 import com.cyclone.staffapp.domain.entities.EmployeeDB
@@ -26,7 +26,4 @@ interface EmployeeDAO {
 
     @Query("select * from employeedb")
     fun getAll(): Flowable<List<EmployeeDB>>
-
-    @Query("select * from employeedb where specialty = :id")
-    fun getBySpecialty(id: Long): Flowable<List<EmployeeDB>>
 }

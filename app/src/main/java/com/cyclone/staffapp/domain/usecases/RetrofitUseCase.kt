@@ -1,16 +1,18 @@
-package com.cyclone.staffapp.domain.repositories
+package com.cyclone.staffapp.domain.usecases
 
-import com.cyclone.staffapp.data.di.RetrofitInstance
-import com.cyclone.staffapp.data.entities.Employee
+import com.cyclone.staffapp.data.model.Employee
+import com.cyclone.staffapp.data.network.RetrofitInstance
 import com.cyclone.staffapp.domain.entities.EmployeeDB
 import com.cyclone.staffapp.domain.entities.SpecialtyDB
-import com.cyclone.staffapp.domain.repositories.employee.EmployeeDataRepo
-import com.cyclone.staffapp.domain.repositories.specialty.SpecialtyDataRepo
 
-class RetrofitDataRepo {
+class RetrofitUseCase {
     companion object {
 
         fun loadData() {
+
+            SpecialtyUseCase.getInstance().deleteAll()
+            EmployeeUseCase.getInstance().deleteAll()
+
             RetrofitInstance.getService()
                 .loadData()
                 .doOnSuccess { response ->
@@ -29,8 +31,8 @@ class RetrofitDataRepo {
                         )
                     }
 
-                    SpecialtyDataRepo.getInstance().insertAll(specialtyDB)
-                    EmployeeDataRepo.getInstance().insertAll(employeeDB)
+                    SpecialtyUseCase.getInstance().insertAll(specialtyDB)
+                    EmployeeUseCase.getInstance().insertAll(employeeDB)
                 }
                 .doOnError {
                     it.printStackTrace()

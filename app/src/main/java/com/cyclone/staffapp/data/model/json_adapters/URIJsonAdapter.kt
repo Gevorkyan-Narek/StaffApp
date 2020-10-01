@@ -1,4 +1,4 @@
-package com.cyclone.staffapp.json_adapters
+package com.cyclone.staffapp.data.model.json_adapters
 
 import android.net.Uri
 import com.squareup.moshi.FromJson

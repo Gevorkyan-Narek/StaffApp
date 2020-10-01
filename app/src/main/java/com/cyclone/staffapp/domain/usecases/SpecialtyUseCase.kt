@@ -1,15 +1,16 @@
-package com.cyclone.staffapp.domain.repositories.specialty
+package com.cyclone.staffapp.domain.usecases
 
 import com.cyclone.staffapp.data.db.DataBase
 import com.cyclone.staffapp.domain.entities.SpecialtyDB
+import com.cyclone.staffapp.domain.repositories.SpecialtyRepo
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
-class SpecialtyDataRepo : SpecialtyRepo {
+class SpecialtyUseCase : SpecialtyRepo {
 
     companion object {
-        private val instance = SpecialtyDataRepo()
+        private val instance = SpecialtyUseCase()
 
         fun getInstance() = instance
     }
@@ -33,31 +34,31 @@ class SpecialtyDataRepo : SpecialtyRepo {
     }
 
     override fun insert(specialtyDB: SpecialtyDB) {
-        return DataBase
-            .getDataBase()
+        DataBase.getDataBase()
             .specialtyDAO()
             .insert(specialtyDB)
     }
 
     override fun insertAll(listSpecialtyDB: List<SpecialtyDB>) {
-        return DataBase
-            .getDataBase()
+        DataBase.getDataBase()
             .specialtyDAO()
             .insertAll(listSpecialtyDB)
     }
 
     override fun delete(specialtyDB: SpecialtyDB) {
-        return DataBase
-            .getDataBase()
-            .specialtyDAO()
-            .delete(specialtyDB)
+        Observable.just(DataBase.getDataBase().specialtyDAO())
+            .observeOn(Schedulers.io())
+            .doOnNext {
+                it.delete(specialtyDB)
+            }.subscribe()
     }
 
     override fun deleteAll() {
-        return DataBase
-            .getDataBase()
-            .specialtyDAO()
-            .deleteAll()
+        Observable.just(DataBase.getDataBase().specialtyDAO())
+            .observeOn(Schedulers.io())
+            .doOnNext {
+                it.deleteAll()
+            }.subscribe()
     }
 
 }
