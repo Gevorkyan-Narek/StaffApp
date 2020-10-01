@@ -2,23 +2,15 @@ package com.cyclone.staffapp.presentation.ui
 
 import android.os.Bundle
 import android.view.View
-import androidx.recyclerview.widget.DividerItemDecoration
 import com.cyclone.staffapp.R
 import com.cyclone.staffapp.domain.usecases.EmployeeUseCase
 import com.cyclone.staffapp.presentation.adapter.WorkersAdapter
-import kotlinx.android.synthetic.main.speciality_fragment.*
 import kotlinx.android.synthetic.main.workers_fragment.*
 
 class WorkersFragment : MainView(R.layout.workers_fragment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        workersRecycler.addItemDecoration(
-            DividerItemDecoration(
-                context,
-                DividerItemDecoration.VERTICAL
-            )
-        )
         getData()
     }
 

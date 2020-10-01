@@ -3,17 +3,15 @@ package com.cyclone.staffapp
 import android.annotation.SuppressLint
 import android.content.Context
 import android.net.Uri
-import android.util.Log
 import android.widget.ImageView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import java.text.SimpleDateFormat
 import java.util.*
 
 fun ImageView.setImage(context: Context?, uri: Uri?) {
     Glide.with(context!!)
         .load(uri)
-        .transform(RoundedCorners(15))
+        .circleCrop()
         .placeholder(R.drawable.ic_cap)
         .into(this)
 }
@@ -42,4 +40,13 @@ fun Date?.getAge(): String {
     birthday.time = this
 
     return (today.get(Calendar.YEAR) - birthday.get(Calendar.YEAR)).toString()
+}
+
+fun getYearString(year: String): String {
+    return when (year.last()) {
+        '1' -> "год"
+        in '2'..'4' -> "года"
+        in '5'..'9','0' -> "лет"
+        else -> ""
+    }
 }

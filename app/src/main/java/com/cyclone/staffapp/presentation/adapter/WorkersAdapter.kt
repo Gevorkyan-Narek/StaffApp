@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cyclone.staffapp.R
 import com.cyclone.staffapp.domain.entities.EmployeeDB
 import com.cyclone.staffapp.getAge
+import com.cyclone.staffapp.getYearString
 import com.cyclone.staffapp.presentation.ui.EmployeeFragment
 import com.cyclone.staffapp.setImage
 import kotlinx.android.synthetic.main.workers_item_adapter.view.*
@@ -34,7 +35,7 @@ class WorkersAdapter(private val workers: List<EmployeeDB>) :
         val worker = workers[position]
         val resources = holder.age.context.resources
         holder.name.text = resources.getString(R.string.name, worker.firstName, worker.lastName)
-        holder.age.text = resources.getString(R.string.age, worker.birthday.getAge())
+        holder.age.text = resources.getString(R.string.age, worker.birthday.getAge(), getYearString(worker.birthday.getAge()))
         holder.avatar.setImage(holder.avatar.context, workers[position].avatarURI)
 
         holder.itemView.setOnClickListener {

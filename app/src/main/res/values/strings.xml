@@ -6,7 +6,8 @@
     <string name="FIO">ФИО:</string>
     <string name="birthday">Дата рождения:</string>
     <string name="specialty">Специальность:</string>
-    <string name="age">Возраст: %1$s</string>
+    <string name="age">Возраст: %1$s %2$s</string>
     <string name="name">%1$s %2$s</string>
-    <string name="date">%1$s (%2$s)</string>
+    <string name="date">%1$s - %2$s %3$s</string>
+    <string name="personal_info">Личные данные</string>
 </resources>

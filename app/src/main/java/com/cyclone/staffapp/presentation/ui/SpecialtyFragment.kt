@@ -2,7 +2,6 @@ package com.cyclone.staffapp.presentation.ui
 
 import android.os.Bundle
 import android.view.View
-import androidx.recyclerview.widget.DividerItemDecoration
 import com.cyclone.staffapp.R
 import com.cyclone.staffapp.domain.usecases.SpecialtyUseCase
 import com.cyclone.staffapp.presentation.adapter.SpecialtyAdapter
@@ -12,7 +11,6 @@ class SpecialtyFragment : MainView(R.layout.speciality_fragment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        specialtyRecycler.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
         getData()
     }
 

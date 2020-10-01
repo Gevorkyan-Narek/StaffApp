@@ -6,6 +6,7 @@ import com.cyclone.staffapp.R
 import com.cyclone.staffapp.domain.usecases.EmployeeUseCase
 import com.cyclone.staffapp.domain.usecases.SpecialtyUseCase
 import com.cyclone.staffapp.getAge
+import com.cyclone.staffapp.getYearString
 import com.cyclone.staffapp.setImage
 import kotlinx.android.synthetic.main.employee_fragment.*
 import java.text.SimpleDateFormat
@@ -27,9 +28,10 @@ class EmployeeFragment : MainView(R.layout.employee_fragment) {
                 name.text = getString(R.string.name, it.firstName, it.lastName)
                 birthday.text = getString(
                     R.string.date,
-                    if (it.birthday == null) "-"
-                    else SimpleDateFormat("dd.MM.YYYY", Locale.getDefault()).format(it.birthday),
-                    it.birthday.getAge()
+                    if (it.birthday == null) ""
+                    else SimpleDateFormat("dd MMMM YYYY", Locale.getDefault()).format(it.birthday),
+                    it.birthday.getAge(),
+                    getYearString(it.birthday.getAge())
                 )
                 specList.addAll(it.specialty)
                 avatar.setImage(context, it.avatarURI)
