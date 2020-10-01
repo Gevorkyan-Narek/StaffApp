@@ -1,4 +1,4 @@
-package com.cyclone.staffapp.domain.repositories.specialty
+package com.cyclone.staffapp.domain.repositories
 
 import com.cyclone.staffapp.domain.entities.SpecialtyDB
 import io.reactivex.Observable

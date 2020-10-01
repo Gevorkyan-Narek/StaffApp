@@ -1,26 +1,34 @@
 package com.cyclone.staffapp.presentation.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.cyclone.staffapp.R
-import com.cyclone.staffapp.domain.repositories.employee.EmployeeDataRepo
+import com.cyclone.staffapp.domain.usecases.EmployeeUseCase
 import com.cyclone.staffapp.presentation.adapter.WorkersAdapter
+import kotlinx.android.synthetic.main.speciality_fragment.*
 import kotlinx.android.synthetic.main.workers_fragment.*
 
 class WorkersFragment : MainView(R.layout.workers_fragment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        workersRecycler.addItemDecoration(
+            DividerItemDecoration(
+                context,
+                DividerItemDecoration.VERTICAL
+            )
+        )
         getData()
     }
 
     override fun getData() {
         val id = arguments!!.getLong("specialtyId")
-        EmployeeDataRepo.getInstance()
+        EmployeeUseCase.getInstance()
             .getAll()
             .doOnNext {
-                workersRecycler.adapter = WorkersAdapter(it.filter { employeeDB -> employeeDB.specialty.contains(id) })
+                workersRecycler.adapter =
+                    WorkersAdapter(it.filter { employeeDB -> employeeDB.specialty.contains(id) })
             }
             .doOnError {
                 it.printStackTrace()

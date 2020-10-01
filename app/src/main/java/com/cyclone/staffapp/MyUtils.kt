@@ -3,6 +3,7 @@ package com.cyclone.staffapp
 import android.annotation.SuppressLint
 import android.content.Context
 import android.net.Uri
+import android.util.Log
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -31,4 +32,14 @@ fun getDate(birthday: String?): Date? {
                 return date
         }
     return null
+}
+
+fun Date?.getAge(): String {
+    if (this == null) return "Неизвестно"
+
+    val today = Calendar.getInstance()
+    val birthday = Calendar.getInstance()
+    birthday.time = this
+
+    return (today.get(Calendar.YEAR) - birthday.get(Calendar.YEAR)).toString()
 }

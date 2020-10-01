@@ -5,8 +5,8 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.cyclone.staffapp.data.repositories.EmployeeDAO
-import com.cyclone.staffapp.data.repositories.SpecialtyDAO
+import com.cyclone.staffapp.data.repositories.employee.EmployeeDAO
+import com.cyclone.staffapp.data.repositories.specialty.SpecialtyDAO
 import com.cyclone.staffapp.domain.entities.EmployeeDB
 import com.cyclone.staffapp.domain.entities.SpecialtyDB
 

@@ -1,4 +1,4 @@
-package com.cyclone.staffapp.data.repositories
+package com.cyclone.staffapp.data.repositories.specialty
 
 import androidx.room.*
 import com.cyclone.staffapp.domain.entities.SpecialtyDB

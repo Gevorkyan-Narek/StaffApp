@@ -1,4 +1,4 @@
-package com.cyclone.staffapp.data.repositories
+package com.cyclone.staffapp.data.repositories.employee
 
 import androidx.room.*
 import com.cyclone.staffapp.domain.entities.EmployeeDB
