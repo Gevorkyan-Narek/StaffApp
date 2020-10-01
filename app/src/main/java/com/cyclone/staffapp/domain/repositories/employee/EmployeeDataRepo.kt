@@ -58,12 +58,4 @@ class EmployeeDataRepo : EmployeeRepo {
       .observeOn(AndroidSchedulers.mainThread())
       .toObservable()
   }
-
-  override fun getBySpecialty(id: Long): Observable<List<EmployeeDB>> {
-    return DataBase.getDataBase()
-      .employeeDAO()
-      .getBySpecialty(id)
-      .observeOn(AndroidSchedulers.mainThread())
-      .toObservable()
-  }
 }

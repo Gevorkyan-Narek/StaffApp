@@ -1,7 +1,6 @@
 package com.cyclone.staffapp.presentation.adapter
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,7 +31,7 @@ class SpecialtyAdapter(private val list: List<SpecialtyDB>) :
         holder.itemView.setOnClickListener {
             val fragment = WorkersFragment()
             Bundle().apply {
-                putLong("id", list[position].id)
+                putLong("specialtyId", list[position].id)
             }.let { bundle ->
                 fragment.arguments = bundle
             }

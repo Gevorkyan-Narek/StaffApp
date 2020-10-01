@@ -26,7 +26,4 @@ interface EmployeeDAO {
 
     @Query("select * from employeedb")
     fun getAll(): Flowable<List<EmployeeDB>>
-
-    @Query("select * from employeedb where specialty = :id")
-    fun getBySpecialty(id: Long): Flowable<List<EmployeeDB>>
 }

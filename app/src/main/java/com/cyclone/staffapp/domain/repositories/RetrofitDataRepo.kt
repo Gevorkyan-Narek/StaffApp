@@ -6,11 +6,30 @@ import com.cyclone.staffapp.domain.entities.EmployeeDB
 import com.cyclone.staffapp.domain.entities.SpecialtyDB
 import com.cyclone.staffapp.domain.repositories.employee.EmployeeDataRepo
 import com.cyclone.staffapp.domain.repositories.specialty.SpecialtyDataRepo
+import io.reactivex.Observable
+import io.reactivex.schedulers.Schedulers
 
 class RetrofitDataRepo {
     companion object {
 
         fun loadData() {
+
+            Observable.just(
+                SpecialtyDataRepo.getInstance(),
+            )
+                .observeOn(Schedulers.io())
+                .doOnNext {
+                    it.deleteAll()
+                }.subscribe()
+
+            Observable.just(
+                EmployeeDataRepo.getInstance(),
+            )
+                .observeOn(Schedulers.io())
+                .doOnNext {
+                    it.deleteAll()
+                }.subscribe()
+
             RetrofitInstance.getService()
                 .loadData()
                 .doOnSuccess { response ->

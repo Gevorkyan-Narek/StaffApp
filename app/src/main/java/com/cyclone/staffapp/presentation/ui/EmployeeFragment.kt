@@ -8,9 +8,6 @@ import com.cyclone.staffapp.R
 import com.cyclone.staffapp.domain.repositories.employee.EmployeeDataRepo
 import com.cyclone.staffapp.domain.repositories.specialty.SpecialtyDataRepo
 import com.cyclone.staffapp.setImage
-import io.reactivex.Observable
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.functions.BiFunction
 import kotlinx.android.synthetic.main.employee_fragment.*
 import java.text.SimpleDateFormat
 import java.util.*

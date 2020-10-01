@@ -5,10 +5,7 @@ import android.util.Log
 import android.view.View
 import com.cyclone.staffapp.R
 import com.cyclone.staffapp.domain.repositories.employee.EmployeeDataRepo
-import com.cyclone.staffapp.presentation.adapter.SpecialtyAdapter
 import com.cyclone.staffapp.presentation.adapter.WorkersAdapter
-import io.reactivex.android.schedulers.AndroidSchedulers
-import kotlinx.android.synthetic.main.speciality_fragment.*
 import kotlinx.android.synthetic.main.workers_fragment.*
 
 class WorkersFragment : MainView(R.layout.workers_fragment) {
@@ -19,15 +16,13 @@ class WorkersFragment : MainView(R.layout.workers_fragment) {
     }
 
     override fun getData() {
-        val id = arguments!!.getLong("id")
+        val id = arguments!!.getLong("specialtyId")
         EmployeeDataRepo.getInstance()
-            .getBySpecialty(id)
+            .getAll()
             .doOnNext {
-                Log.d("Workers: Next", it.joinToString(", ") { employeeDB -> employeeDB.firstName })
-                workersRecycler.adapter = WorkersAdapter(it)
+                workersRecycler.adapter = WorkersAdapter(it.filter { employeeDB -> employeeDB.specialty.contains(id) })
             }
             .doOnError {
-                Log.d("Workers: Error", it.localizedMessage!!)
                 it.printStackTrace()
             }
             .subscribe()

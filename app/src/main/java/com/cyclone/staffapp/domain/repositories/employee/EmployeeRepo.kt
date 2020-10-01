@@ -18,6 +18,4 @@ interface EmployeeRepo {
     fun getById(id: Long): Observable<EmployeeDB>
 
     fun getAll(): Observable<List<EmployeeDB>>
-
-    fun getBySpecialty(id: Long): Observable<List<EmployeeDB>>
 }
