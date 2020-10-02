@@ -5,12 +5,17 @@ import android.view.View
 import com.cyclone.staffapp.R
 import com.cyclone.staffapp.domain.usecases.EmployeeUseCase
 import com.cyclone.staffapp.presentation.adapter.WorkersAdapter
+import kotlinx.android.synthetic.main.employee_fragment.*
 import kotlinx.android.synthetic.main.workers_fragment.*
+import kotlinx.android.synthetic.main.workers_fragment.back
 
 class WorkersFragment : MainView(R.layout.workers_fragment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        back.setOnClickListener {
+            fragmentManager?.popBackStack()
+        }
         getData()
     }
 

@@ -16,6 +16,9 @@ class EmployeeFragment : MainView(R.layout.employee_fragment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        back.setOnClickListener {
+            fragmentManager?.popBackStack()
+        }
         getData()
     }
 
